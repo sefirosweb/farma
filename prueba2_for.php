@@ -4,6 +4,7 @@
 ¿Puedes añadir una única línea para hacerlo funcionar correctamente?
 Restando $i - 1 para continuar correctamente con el for 
 * $i--
+* Línea 36
 
 ¿Qué problemas de rendimiento detectas?
 El rendimiento se fe afectado directamente en el tamaño de la array que envías,
@@ -27,14 +28,12 @@ function removeDuplicatedNumbers($array)
     for ($i = 0; $i < count($array); $i++) {
         $number = $array[$i];
         if (in_array($number, $seenNumbers)) {
-            // remove item $i from the array
             $array = array_merge(
                 array_slice($array, 0, $i),
                 array_slice($array, $i + 1, count($array) - $i - 1)
             );
-            $i--; // <-- solución
+            $i--; // <-- solucion del bug
         } else {
-            // add number to the list of seen numbers
             $seenNumbers[] = $number;
         }
     }
